@@ -18,8 +18,8 @@ catkin build  # <-- you can also use: colcon build --cmake-args -DCMAKE_BUILD_TY
 
 ## Usage
 ```
-source install/setup.bash
-rosrun  ptcldcolorscale ptcldcolorscale.py _pointcloud_topic:=<POINTLCOUD_TOPIC> _channel:=<POINTCLOUD_FIELD> _image_topic:=<OUTPUT_IMAGE_TOPIC>
+cd <ROS-WORKSPACE>/pointcloud_scale
+python src/ptcldcolorscale/script/ptcldcolorscale.py _pointcloud_topic:=<POINTLCOUD_TOPIC> _channel:=<POINTCLOUD_FIELD> _image_topic:=<OUTPUT_IMAGE_TOPIC>
 ```
 
 Available arguments are as follows:

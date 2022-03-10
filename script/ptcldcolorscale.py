@@ -91,6 +91,9 @@ class PtCldColorScale(object):
                 maxval = points_view[self.channel].max()
             
             return self.make_scale(minval, maxval)
+        else:
+            rospy.logfatal("Field \"%s\" was not found in the pointcloud.", self.channel)
+            rospy.signal_shutdown('Error') 
 
     def ptcld_callback(self, pointcloud_msg):
         self.publish(self.getcolorscale(pointcloud_msg))
@@ -99,7 +102,12 @@ class PtCldColorScale(object):
         self.pub_scale.publish(self.bridge.cv2_to_imgmsg(image, "bgr8"))
 
     def run(self):
-        rospy.spin()
+        try:
+            rospy.spin()
+        except KeyboardInterrupt:
+            print('Shutting down...')
+        except:
+            print('Shutting down...')
 
 if __name__ == '__main__':
     ptcldcolorscale = PtCldColorScale()
